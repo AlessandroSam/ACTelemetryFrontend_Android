@@ -1,0 +1,252 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:id="@+id/dashboard_fragment"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:keepScreenOn="true"
+    tools:context="com.vtm115.alessandrosam.actelemetryfrontend_android.DashboardFragment">
+
+    <RelativeLayout
+        android:id="@+id/lcd_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/SpeedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/dash_speed"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/GearLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/SpeedLabel"
+            android:layout_centerHorizontal="true"
+            android:text="@string/dash_gear"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/RPMLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/GearLabel"
+            android:layout_alignParentRight="true"
+            android:text="@string/dash_rpm"
+            android:textSize="@dimen/dash_label" />
+
+        <com.vtm115.alessandrosam.actelemetryfrontend_android.LCDTextView
+            android:id="@+id/SpeedData"
+            android:layout_width="@dimen/dash_speed_width"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/SpeedLabel"
+            android:layout_below="@+id/SpeedLabel"
+            android:layout_marginTop="0dp"
+            android:textAlignment="textEnd"
+            android:text="-"
+            android:textSize="@dimen/dash_speed_rpm" />
+
+        <com.vtm115.alessandrosam.actelemetryfrontend_android.LCDTextView
+            android:id="@+id/GearData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GearLabel"
+            android:layout_centerHorizontal="true"
+            android:text="-"
+            android:textSize="@dimen/dash_gear" />
+
+        <com.vtm115.alessandrosam.actelemetryfrontend_android.LCDTextView
+            android:id="@+id/RPMData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/SpeedData"
+            android:layout_alignParentRight="true"
+            android:text="-"
+            android:textSize="@dimen/dash_speed_rpm" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pedals_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/lcd_layout">
+
+        <TextView
+            android:id="@+id/ThrottleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/dash_throttle"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/ThrottleData"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ThrottleLabel"
+            android:layout_toRightOf="@+id/ThrottleLabel"
+            android:layout_marginLeft="10dp"
+            android:text="0.00"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/BrakeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ThrottleLabel"
+            android:layout_toRightOf="@+id/ThrottleData"
+            android:layout_marginLeft="20dp"
+            android:text="@string/dash_brake"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/BrakeData"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ThrottleLabel"
+            android:layout_toRightOf="@+id/BrakeLabel"
+            android:layout_marginLeft="10dp"
+            android:text="0.00"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/ClutchLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ThrottleLabel"
+            android:layout_toRightOf="@+id/BrakeData"
+            android:layout_marginLeft="20dp"
+            android:text="@string/dash_clutch"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/ClutchData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ThrottleLabel"
+            android:layout_toRightOf="@+id/ClutchLabel"
+            android:layout_marginLeft="10dp"
+            android:text="0.00"
+            android:textSize="@dimen/dash_label" />
+
+        <com.vtm115.alessandrosam.actelemetryfrontend_android.PedalDrawable
+            android:id="@+id/ThrottleGauge"
+            android:layout_below="@+id/ThrottleLabel"
+            android:layout_alignStart="@+id/ThrottleLabel"
+            android:layout_width="0sp"
+            android:layout_height="10sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/timing_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lcd_layout">
+
+        <TextView
+            android:id="@+id/CurrentLapLabel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/dash_ctime"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/BestLapLabel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CurrentLapLabel"
+            android:layout_marginTop="4dp"
+            android:layout_alignLeft="@+id/CurrentLapLabel"
+            android:text="@string/dash_btime"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/SplitLabel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/BestLapLabel"
+            android:layout_marginTop="4dp"
+            android:text="@string/dash_split"
+            android:textSize="@dimen/dash_label" />
+
+        <!-- Text alignment ?! -->
+        <TextView
+            android:id="@+id/CurrentLapData"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/CurrentLapLabel"
+            android:layout_alignBaseline="@+id/CurrentLapLabel"
+            android:layout_marginLeft="4dp"
+            android:text="--:--.---"
+            android:textAlignment="viewEnd"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/BestLapData"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/CurrentLapData"
+            android:layout_alignBaseline="@+id/BestLapLabel"
+            android:text="--:--.---"
+            android:textAlignment="viewEnd"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/DeltaData"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/CurrentLapData"
+            android:layout_alignBaseline="@+id/SplitLabel"
+            android:text="--.---"
+            android:textAlignment="viewEnd"
+            android:textSize="@dimen/dash_label" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/static_info_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/CarAndTrackInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/DriverName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/CarAndTrackInfo"
+            android:textSize="@dimen/dash_label" />
+
+        <TextView
+            android:id="@+id/SessionInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/DriverName"
+            android:textSize="@dimen/dash_label" />
+
+        <ImageView
+            android:id="@+id/CarLogo"
+            android:layout_width="@dimen/dash_logo"
+            android:layout_height="@dimen/dash_logo"
+            android:src="@drawable/carlogo_bmw"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
